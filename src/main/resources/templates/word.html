@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Animal</title>
+</head>
+<body>
+<form th:action="@{/animal}" th:object="${animal}" method="post">
+    <div th:text="#{form.animal.label.name} + ':'"></div> <input type="text" th:field="*{name}" autocomplete="off">
+    <div th:text="#{form.animal.label.age} + ':'"></div> <input type="number" th:field="*{age}" autocomplete="off">
+    <div th:text="#{form.animal.label.breed} + ':'"></div> <input type="text" th:field="*{breed}" autocomplete="off">
+
+    <div th:text="#{form.animal.label.gender} + ':'"></div>
+    <select th:field="*{gender}">
+        <option th:each="gender : ${T(pl.sdacademy.demoweb.model.AnimalPOJO.Gender).values()}"
+                th:value="${gender}"
+                th:text="#{${gender.msgKey}}">
+        </option>
+    </select>
+
+    <div th:text="#{form.animal.label.owner} + ':'"></div>
+    <select th:field="*{ownerId}">
+        <option th:each="owner : ${owners}"
+                th:value="${owner.id}"
+                th:text="${owner.name} + ' ' + ${owner.surname}">
+        </option>
+    </select>
+
+    <input type="submit" th:value="#{form.label.submit}">
+</form>
+</body>
+</html>
