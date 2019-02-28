@@ -12,118 +12,143 @@
 </head>
 <body>
 
-    <header>
+<header>
 
-        <nav class="navbar navbar-dark  bg-primary navbar-expand-lg">
+    <nav class="navbar navbar-dark  bg-primary navbar-expand-lg">
 
-            <a class="navbar-brand" href="/"><img src="images/logo.png" width="30" height="30"
-                                                  class="d-inline-block mr-1 align-bottom" alt=""> EnWord 2.0</a>
+        <a class="navbar-brand" href="/"><img src="images/logo.png" width="30" height="30"
+                                              class="d-inline-block mr-1 align-bottom" alt=""> EnWord 2.0</a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
-                    aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
+                aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="mainmenu">
+        <div class="collapse navbar-collapse" id="mainmenu">
 
-                <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/"> Start </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/"> Start </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/random"> Nauka słówek </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/random"> Nauka słówek </a>
+                </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                           aria-expanded="false" id="submenu" aria-haspopup="true"> Słówka </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                       aria-expanded="false" id="submenu" aria-haspopup="true"> Słówka </a>
 
-                        <div class="dropdown-menu" aria-labelledby="submenu">
+                    <div class="dropdown-menu" aria-labelledby="submenu">
 
-                            <a class="dropdown-item" href="/index"> Lista Słowek do nauki </a>
-                            <a class="dropdown-item" href="/word"> Dodaj Nowe słowo </a>
-
-
-                        </div>
-
-                    </li>
+                        <a class="dropdown-item" href="/index"> Lista Słowek do nauki </a>
+                        <a class="dropdown-item" href="/word"> Dodaj Nowe słowo </a>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Kontakt </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+                    </div>
 
-    <div class="container">
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Kontakt </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
     <table class="table table-hover table-light">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Słowo</th>
-            <th scope="col">Tłumaczenie</th>
-
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="slowo : ${words}">
-            <th th:text="${words.indexOf(slowo)+1}"></th>
-            <th th:text="${slowo.word}"></th>
-            <th th:text="${slowo.translatedWord}"></th>
-            <th>
+            <th scope="row" th:text="${words.indexOf(slowo)+1}">1</th>
+            <td th:text="${slowo.word}"></td>
+            <td th:text="${slowo.translatedWord}"></td>
+            <td>
                 <form method="POST" th:action="@{'/update?add='+${slowo.addDate}}">
-                    <button type="submit" name="submit" value="value" class="btn btn-success btn-sm">UPDATE</button>
-                </form>
-            </th>
-            <th>
-                <!--<form method="POST" th:action="@{'/delete/'+${slowo.addDate}}">-->
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Delete
+                    <button type="submit" name="submit" value="value" class="btn btn-success btn-sm">UPDATE
                     </button>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                SURE??
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zrezygnuj</button>
-                                <form method="POST" th:action="@{'/delete/'+${slowo.addDate}}">
-                                    <button type="submit" class="btn btn-primary">Usuń Słowo</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--</form>-->
-            </th>
-
+                </form>
+            </td>
         </tr>
 
         </tbody>
     </table>
 
 
+    <!--<table class="table table-hover table-light">-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th scope="col">#</th>-->
+            <!--<th scope="col">Słowo</th>-->
+            <!--<th scope="col">Tłumaczenie</th>-->
+
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<td th:each="slowo : ${words}" th:text="">-->
+        <!--<td th:text="${words.indexOf(slowo)+1}"></td>-->
+        <!--<td th:text="${slowo.word}"></td>-->
+        <!--<td th:text="${slowo.translatedWord}"></td>-->
+        <!--<td>-->
+            <!--<form method="POST" th:action="@{'/update?add='+${slowo.addDate}}">-->
+                <!--<button type="submit" name="submit" value="value" class="btn btn-success btn-sm">UPDATE-->
+                <!--</button>-->
+            <!--</form>-->
+        <!--</td>-->
+        <!--<td>-->
+            <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
+                <!--Delete-->
+            <!--</button>-->
+            <!--&lt;!&ndash; Modal &ndash;&gt;-->
+            <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"-->
+                 <!--aria-labelledby="exampleModalLabel"-->
+                 <!--aria-hidden="true">-->
+                <!--<div class="modal-dialog" role="document">-->
+                    <!--<div class="modal-content">-->
+                        <!--<div class="modal-header">-->
+                            <!--<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                                <!--<span aria-hidden="true">&times;</span>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<div class="modal-body">-->
+                            <!--SURE??-->
+                        <!--</div>-->
+                        <!--<div class="modal-footer">-->
+                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Zrezygnuj-->
+                            <!--</button>-->
+                            <!--<form method="POST" th:action="@{'/delete/'+${slowo.addDate}}">-->
+                                <!--<button type="submit" class="btn btn-primary">Usuń Słowo</button>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash;</form>&ndash;&gt;-->
+        <!--</td>-->
+
+        <!--</td>-->
+
+        <!--</tbody>-->
+    <!--</table>-->
+
+
     <a href="/word" type="button">New Word</a>
 
 </div>
-
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

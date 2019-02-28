@@ -1,8 +1,12 @@
+
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>EnWords</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nauka angielskich słówek</title>
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -10,66 +14,84 @@
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
+
 <body>
 
-    <header>
 
-        <nav class="navbar navbar-dark  bg-primary navbar-expand-lg">
+<header>
 
-            <a class="navbar-brand" href="/"><img src="images/logo.png" width="30" height="30"
-                                                  class="d-inline-block mr-1 align-bottom" alt=""> EnWord 2.0</a>
+    <nav class="navbar navbar-dark  bg-primary navbar-expand-lg">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
-                    aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <a class="navbar-brand" href="/"><img src="images/logo.png" width="30" height="30"
+                                              class="d-inline-block mr-1 align-bottom" alt=""> EnWord 2.0</a>
 
-            <div class="collapse navbar-collapse" id="mainmenu">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
+                aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse" id="mainmenu">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/"> Start </a>
-                    </li>
+            <ul class="navbar-nav mr-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/random"> Nauka słówek </a>
-                    </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/"> Start </a>
+                </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                           aria-expanded="false" id="submenu" aria-haspopup="true"> Słówka </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/random"> Nauka słówek </a>
+                </li>
 
-                        <div class="dropdown-menu" aria-labelledby="submenu">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                       aria-expanded="false" id="submenu" aria-haspopup="true"> Słówka </a>
 
-                            <a class="dropdown-item" href="/index"> Lista Słowek do nauki </a>
-                            <a class="dropdown-item" href="/word"> Dodaj Nowe słowo </a>
+                    <div class="dropdown-menu" aria-labelledby="submenu">
 
-
-                        </div>
-
-                    </li>
+                        <a class="dropdown-item" href="/index"> Lista Słowek do nauki </a>
+                        <a class="dropdown-item" href="/word"> Dodaj Nowe słowo </a>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Kontakt </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+                    </div>
 
-    <div class="container">
-    <form th:action="@{/wordCreator}" th:object="${word}" method="post">
-        <div th:text="'Słowo :'"></div>
-        <input type="text" th:field="*{word}" autocomplete="off">
-        <div th:text="'Tłumaczenie :'"></div>
-        <input type="text" th:field="*{translatedWord}" autocomplete="off">
+                </li>
 
-        <input type="submit" th:value="'Wyślij'">
-    </form>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Kontakt </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col">
+            <form th:action="@{/wordCreator}" th:object="${word}" method="post">
+                <div th:text="'Słowo :'"></div>
+                <input type="text" th:field="*{word}" autocomplete="off">
+                <div th:text="'Tłumaczenie :'"></div>
+                <input type="text" th:field="*{translatedWord}" autocomplete="off">
+
+                <input type="submit" th:value="'Wyślij'">
+            </form>
+
+
+        </div>
+    </div>
+
+    <footer style="text-align: center">
+
+        <p><span style="text-decoration:none;color:grey;">Developed by KrUcHy</span>
+        </p>
+
+    </footer>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -81,25 +103,8 @@
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>
-
-
-<!--<form th:action="@{/wordCreator}" th:object="${word}" method="post">-->
-<!--<div class="form-group">-->
-<!--<label for="exampleInputEmail1">Słowo</label>-->
-<!--<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
-<!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-<!--<label for="exampleInputPassword1">Password</label>-->
-<!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
-<!--</div>-->
-<!--<div class="form-group form-check">-->
-<!--<input type="checkbox" class="form-check-input" id="exampleCheck1">-->
-<!--<label class="form-check-label" for="exampleCheck1">Check me out</label>-->
-<!--</div>-->
-<!--<button type="submit" class="btn btn-primary">Submit</button>-->
-<!--</form>-->
-
 
