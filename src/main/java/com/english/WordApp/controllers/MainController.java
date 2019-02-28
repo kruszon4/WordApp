@@ -3,18 +3,16 @@ package com.english.WordApp.controllers;
 import com.english.WordApp.model.WordPojo;
 import com.english.WordApp.services.WordService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.io.FileNotFoundException;
 
 @Controller
 public class MainController {
 
 
-
     private final WordService wordService;
-
 
 
     public MainController(WordService wordService) {
@@ -24,26 +22,63 @@ public class MainController {
 
     @PostMapping("/wordCreator")
     private String putWordToDb(WordPojo wordPojo) {
-
+        wordPojo.setAddDate(System.currentTimeMillis());
         wordService.saveWord(wordPojo);
-
-        return "index";
+        return "redirect:/word";
     }
+
 
     @GetMapping("/word")
-    private String getWordFromDb(WordPojo wordPojo) {
+    private String getWordFromDb(Model model) {
+        model.addAttribute("word", new WordPojo());
+        return "word";
+    }
 
-
-        List<WordPojo> allWord = wordService.getALLWord();
-
-
-        return "index";
+    @GetMapping("/word2")
+    private String putWordFromFile() throws FileNotFoundException {
+        wordService.addWordToDbFromFile();
+        return "redirect:/index";
     }
 
 
-    @GetMapping("/")
-    public String homePage(){
+    @GetMapping("/random")
+    private String getRandomWord(Model model) {
+        model.addAttribute("random", wordService.getRandomWord());
+        return "random";
+    }
+
+    @GetMapping("/index")
+    private String getAllWordFromDb(Model model) {
+        model.addAttribute("words", wordService.getALLWord());
         return "index";
+    }
+
+    @GetMapping("/")
+    private String mainPage() {
+
+        return "index2";
+    }
+
+
+    @PostMapping("/update")
+    private String updateWordInDb(@RequestParam(value = "add") Long addDate) {
+
+        wordService.updateWord(addDate);
+        return "redirect:/random";
+    }
+
+    @PostMapping("/update2")
+    private String updateWordInDb2(@RequestParam(value = "add") Long addDate) {
+
+        wordService.updateWord(addDate);
+        return "redirect:/";
+    }
+
+    @PostMapping("/delete/{delete}")
+    private String deleteWordFromDb(@PathVariable(value = "delete") Long addDate) {
+
+        wordService.deleteWord(addDate);
+        return "redirect:/index";
     }
 
 

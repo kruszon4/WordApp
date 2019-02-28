@@ -2,31 +2,104 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Animal</title>
+    <title>EnWords</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+
 </head>
 <body>
-<form th:action="@{/animal}" th:object="${animal}" method="post">
-    <div th:text="#{form.animal.label.name} + ':'"></div> <input type="text" th:field="*{name}" autocomplete="off">
-    <div th:text="#{form.animal.label.age} + ':'"></div> <input type="number" th:field="*{age}" autocomplete="off">
-    <div th:text="#{form.animal.label.breed} + ':'"></div> <input type="text" th:field="*{breed}" autocomplete="off">
+<div class="container">
+    <header>
 
-    <div th:text="#{form.animal.label.gender} + ':'"></div>
-    <select th:field="*{gender}">
-        <option th:each="gender : ${T(pl.sdacademy.demoweb.model.AnimalPOJO.Gender).values()}"
-                th:value="${gender}"
-                th:text="#{${gender.msgKey}}">
-        </option>
-    </select>
+        <nav class="navbar navbar-dark  bg-primary navbar-expand-lg">
 
-    <div th:text="#{form.animal.label.owner} + ':'"></div>
-    <select th:field="*{ownerId}">
-        <option th:each="owner : ${owners}"
-                th:value="${owner.id}"
-                th:text="${owner.name} + ' ' + ${owner.surname}">
-        </option>
-    </select>
+            <a class="navbar-brand" href="/"><img src="images/logo.png" width="30" height="30"
+                                                  class="d-inline-block mr-1 align-bottom" alt=""> EnWord 2.0</a>
 
-    <input type="submit" th:value="#{form.label.submit}">
-</form>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
+                    aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainmenu">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"> Start </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/random"> Nauka słówek </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                           aria-expanded="false" id="submenu" aria-haspopup="true"> Słówka </a>
+
+                        <div class="dropdown-menu" aria-labelledby="submenu">
+
+                            <a class="dropdown-item" href="/index"> Lista Słowek do nauki </a>
+                            <a class="dropdown-item" href="/word"> Dodaj Nowe słowo </a>
+
+
+                        </div>
+
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> Kontakt </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <form th:action="@{/wordCreator}" th:object="${word}" method="post">
+        <div th:text="'Słowo :'"></div>
+        <input type="text" th:field="*{word}" autocomplete="off">
+        <div th:text="'Tłumaczenie :'"></div>
+        <input type="text" th:field="*{translatedWord}" autocomplete="off">
+
+        <input type="submit" th:value="'Wyślij'">
+    </form>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+<!--<form th:action="@{/wordCreator}" th:object="${word}" method="post">-->
+<!--<div class="form-group">-->
+<!--<label for="exampleInputEmail1">Słowo</label>-->
+<!--<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+<!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label for="exampleInputPassword1">Password</label>-->
+<!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+<!--</div>-->
+<!--<div class="form-group form-check">-->
+<!--<input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--<label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--</div>-->
+<!--<button type="submit" class="btn btn-primary">Submit</button>-->
+<!--</form>-->
+
+

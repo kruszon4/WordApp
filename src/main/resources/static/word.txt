@@ -1,0 +1,160 @@
+wedding hall,sala weselna
+groom,Pan młody
+bridegroom,pan młody
+wrist,nadgarstek
+betrayer,zdrajca
+pagan,pogański
+Pentecost,Zielone Świątki
+Midsummer,Połowa lata
+rooted,ukorzeniony
+debilitate,osłabiać czyjeś siły
+debilitating ,wyniszczające
+miraculous,cudowny
+miraculously,cudownie
+revolve around ,kręci się wokół
+brewery,browar
+storage,przechowywanie
+intercom,awiofon
+harmonica,harmonijka
+autistic,autystyczny
+carpenter,Cieśla
+rectangle,prostokąt
+to argue,kłócić się
+social interactions,interakcje społeczne
+complete,kompletny
+engage,angażować
+detect,wykryć
+bachelor party,wieczór kawalerski
+recipient,odbiorca
+censorship,cenzura
+comparison between sth and sth,porównanie między
+tap,dotknięcie
+imagine    imaginary,wyobraź sobie   wyimaginowane
+manually,ręcznie
+peculiar,szczególny
+assumption,założenie
+judge,sędzia
+judgment,wyrok
+interests,zainteresowania
+abnormal ,nieprawidłowy
+prejudice,uprzedzenie
+burst,rozerwanie
+shrinking realm,kurczące się królestwo
+shrink,kurczyć się
+spur a discussion,pobudzić dyskusję
+murky,mroczny
+tally up   calculate,zsumować   obliczyć
+merch,merch
+merchandise,towar
+merchandiser,merchandiser
+resurgence,odrodzenie
+meadow,łąka
+sharp edges,ostre krawędzie
+deep,głęboka
+depth,głębokość
+nasal septum,przegroda nosowa
+sleep apnea,bezdech senny
+breath,oddech
+breathing ,oddechowy
+brother in law,szwagier
+persuade,namawiać
+extraordinary,niezwykły
+parachute ,spadochron
+South,Południe
+fulfilment ,spełnienie
+niece,siostrzenica
+nephew,siostrzeniec
+group work,Praca grupowa
+distance,dystans
+audience,publiczność
+to bail out,wyskoczyć
+threat,zagrożenie
+risk,ryzyko
+vein,żyła
+vain,próżny
+arteriosclerosis,arterioskleroza
+diabetes,cukrzyca
+pancreas,trzustka
+supplementation,suplementacja
+stamina,wytrzymałość
+muscular,muskularny
+excluded,wyłączone
+included,włączone
+inevitable ,nieunikniony
+show up,pokazać się
+agency,agencja
+cabinet,gabinet
+genre,gatunek muzyczny
+extremity,koniec
+acurate,acurate
+life span,długość życia
+differentiate,Rozróżniać
+chemistry,chemik
+parasite,pasożyt
+hunger,głód
+starvation,głód
+threat,zagrożenie
+obesity,otyłość
+persuade,namawiać
+exaggerate,wyolbrzymiać
+mountains ,góry
+resolution,rozkład
+to procrastinate,odwlekać
+court,Sąd
+trial,próba
+complaining,narzekać
+party animal,imprezowicz
+exaggerate,wyolbrzymiać
+aroma,aromat
+bitter,gorzki
+behavior,zachowanie
+vicious cycle,błędne koło
+draw lots,ciągnąć losy
+valuable,wartościowy
+dice,kostka do gry
+peculiar,szczególny
+pharmaceutic,apteczny
+ascorbic acid,kwas askorbinowy
+addictive,wciągający
+comparison,porównanie
+snuff,tabaka
+course,kierunek
+sedentary,siedzący
+spine,kręgosłup
+sore muscles,ból mięśni
+adulthood,wiek dojrzały
+children,dzieci
+demanding,wymagające
+pupil,uczeń
+self assessment,samoocena
+thick,gruby
+neighbor,sąsiad
+commute,dojeżdzać
+rules,zasady
+message,wiadomość
+browse,paść się
+separately,osobno
+expand,rozszerzać
+scent,zapach
+mountain,Góra
+vulnerable to,wrażliwy na
+resistant to,odporna na
+expenditure,wydatek
+age,wiek
+aging,starzenie się
+doll,lalka
+conditions,warunki
+stamina,wytrzymałość
+psyche,Psyche
+intuitive,intuicyjny
+work off,pozbyć się dzięki pracy
+order,zamówienie
+obliged,zobowiązany
+difference,różnica
+drawbacks,wady
+prize,nagroda
+last,ostatni
+efficient,wydajny
+maneuver,manewr
+reliable,niezawodny
+shelf,półka

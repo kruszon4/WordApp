@@ -17,7 +17,8 @@ public class WordPojo {
     private String word;
     private String translatedWord;
     private int understanding;
-    private Date addDate;
+    private Long addDate;
+
 
 
 

@@ -23,16 +23,15 @@ public class WordEntity {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long addDate;
+   // @GeneratedValue(strategy = GenerationType.AUTO)
+
+   // private Long id;
 
     private String word;
     private String translatedWord;
     private int understanding;
 
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Date addDate;
 
 
 }
