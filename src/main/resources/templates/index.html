@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>EnWords</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nauka angielskich słówek</title>
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -10,146 +13,28 @@
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
+
 <body>
 
-<header>
-
-    <nav class="navbar navbar-dark  bg-primary navbar-expand-lg">
-
-        <a class="navbar-brand" href="/"><img src="images/logo.png" width="30" height="30"
-                                              class="d-inline-block mr-1 align-bottom" alt=""> EnWord 2.0</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
-                aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainmenu">
-
-            <ul class="navbar-nav mr-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/"> Start </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/random"> Nauka słówek </a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu" aria-haspopup="true"> Słówka </a>
-
-                    <div class="dropdown-menu" aria-labelledby="submenu">
-
-                        <a class="dropdown-item" href="/index"> Lista Słowek do nauki </a>
-                        <a class="dropdown-item" href="/word"> Dodaj Nowe słowo </a>
+<div th:replace="general.html :: header"></div>
 
 
-                    </div>
-
-                </li>
-
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Kontakt </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
 <div class="container">
 
-    <table class="table table-hover table-light">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="slowo : ${words}">
-            <th scope="row" th:text="${words.indexOf(slowo)+1}">1</th>
-            <td th:text="${slowo.word}"></td>
-            <td th:text="${slowo.translatedWord}"></td>
-            <td>
-                <form method="POST" th:action="@{'/update?add='+${slowo.addDate}}">
-                    <button type="submit" name="submit" value="value" class="btn btn-success btn-sm">UPDATE
-                    </button>
-                </form>
-            </td>
-        </tr>
 
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col">
 
 
-    <!--<table class="table table-hover table-light">-->
-        <!--<thead>-->
-        <!--<tr>-->
-            <!--<th scope="col">#</th>-->
-            <!--<th scope="col">Słowo</th>-->
-            <!--<th scope="col">Tłumaczenie</th>-->
-
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<td th:each="slowo : ${words}" th:text="">-->
-        <!--<td th:text="${words.indexOf(slowo)+1}"></td>-->
-        <!--<td th:text="${slowo.word}"></td>-->
-        <!--<td th:text="${slowo.translatedWord}"></td>-->
-        <!--<td>-->
-            <!--<form method="POST" th:action="@{'/update?add='+${slowo.addDate}}">-->
-                <!--<button type="submit" name="submit" value="value" class="btn btn-success btn-sm">UPDATE-->
-                <!--</button>-->
-            <!--</form>-->
-        <!--</td>-->
-        <!--<td>-->
-            <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
-                <!--Delete-->
-            <!--</button>-->
-            <!--&lt;!&ndash; Modal &ndash;&gt;-->
-            <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"-->
-                 <!--aria-labelledby="exampleModalLabel"-->
-                 <!--aria-hidden="true">-->
-                <!--<div class="modal-dialog" role="document">-->
-                    <!--<div class="modal-content">-->
-                        <!--<div class="modal-header">-->
-                            <!--<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
-                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                                <!--<span aria-hidden="true">&times;</span>-->
-                            <!--</button>-->
-                        <!--</div>-->
-                        <!--<div class="modal-body">-->
-                            <!--SURE??-->
-                        <!--</div>-->
-                        <!--<div class="modal-footer">-->
-                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Zrezygnuj-->
-                            <!--</button>-->
-                            <!--<form method="POST" th:action="@{'/delete/'+${slowo.addDate}}">-->
-                                <!--<button type="submit" class="btn btn-primary">Usuń Słowo</button>-->
-                            <!--</form>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--&lt;!&ndash;</form>&ndash;&gt;-->
-        <!--</td>-->
-
-        <!--</td>-->
-
-        <!--</tbody>-->
-    <!--</table>-->
+        </div>
+    </div>
 
 
-    <a href="/word" type="button">New Word</a>
+    <div th:replace="general.html :: footer"></div>
+
 
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -162,5 +47,8 @@
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>
+

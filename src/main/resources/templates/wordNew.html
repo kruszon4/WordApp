@@ -5,18 +5,21 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dane z TRISTAR'a</title>
+    <title>Nauka angielskich słówek</title>
 
-    <link rel="stylesheet" type="text/css" href="../css/leaflet.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/leaflet-loader.css"/>
-    <script type='text/javascript' src='../js/jquery.min.js'></script>
-    <script type='text/javascript' src='../js/leaflet.js'></script>
-    <script type='text/javascript' src='../js/leaflet-loader.js'></script>
-    <script type='text/javascript' src='../js/leaflet-layerjson.min.js'></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+
+
+    <script>
+        $(document).ready(function () {
+            $("#button").click(function () {
+                $("#success").show("");
+            });
+        });
+    </script>
 
 </head>
 
@@ -71,60 +74,39 @@
 </header>
 
 
-<div th:if="${random.word} != 'null'" class="container">
+<div class="container">
+
+
     <div class="row">
-        <div class="col">
-            <p>
 
-                <button th:text="${random.word}" class="btn btn-primary" type="button" data-toggle="collapse"
-                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Button with data-target
-                </button>
-            </p>
-
-            <div class="collapse" id="collapseExample">
-                <div th:text="${random.translatedWord}" class="card card-body">
-
-                </div>
+        <div id="success" class="col">
+            <div class="alert alert-primary" role="alert">
+                Dodałeś(aś) nowe słowo do bazy !! :)
             </div>
         </div>
     </div>
 
-
     <div class="row">
-
-
         <div class="col">
+            <form th:action="@{/wordCreator}" th:object="${word}" method="post">
+                <div th:text="'Słowo :'"></div>
+                <input type="text" th:field="*{word}" autocomplete="off">
+                <div th:text="'Tłumaczenie :'"></div>
+                <input type="text" th:field="*{translatedWord}" autocomplete="off">
 
-            <button class="btn btn-danger" onClick="window.location.reload()" type="button" data-toggle="collapse"
-                    data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Nie Umiem
-            </button>
-        </div>
-        <div class="col">
-            <form method="POST" th:action="@{'/update?add='+${random.addDate}}">
-                <button class="btn btn-success" type="submit" name="submit" value="value">Umiem</button>
-
+                <input id="button" type="submit" th:value="'Wyślij'">
             </form>
+
+
         </div>
     </div>
 
+    <footer style="text-align: center">
 
-</div>
+        <p><span style="text-decoration:none;color:grey;">Developed by KrUcHy</span>
+        </p>
 
-
-<div th:if="${random.word} == 'null'" class="container">
-    <div class="alert alert-success" role="alert">
-        Umiesz Wszystkie słówka z bazy !! :)
-    </div>
-</div>
-
-<footer style="text-align: center">
-
-    <p><span style="text-decoration:none;color:grey;">Developed by KrUcHy</span>
-    </p>
-
-</footer>
+    </footer>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -142,3 +124,6 @@
 
 </body>
 </html>
+
+
+

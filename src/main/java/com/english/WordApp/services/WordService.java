@@ -52,9 +52,19 @@ public class WordService {
 
     public WordPojo getRandomWord() {
 
-        return map(wordRepository.findRandomWord());
+        WordPojo randomWordPojo = new WordPojo();
 
+        try {
+
+            randomWordPojo = map(wordRepository.findRandomWord());
+
+        } catch (NullPointerException e) {
+            randomWordPojo.setWord("null");
+        }
+
+        return randomWordPojo;
     }
+
 
 
     public void updateWord(Long id) {

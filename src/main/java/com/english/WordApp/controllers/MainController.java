@@ -2,6 +2,7 @@ package com.english.WordApp.controllers;
 
 import com.english.WordApp.model.WordPojo;
 import com.english.WordApp.services.WordService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,11 @@ public class MainController {
         this.wordService = wordService;
     }
 
-
     @PostMapping("/wordCreator")
     private String putWordToDb(WordPojo wordPojo) {
         wordPojo.setAddDate(System.currentTimeMillis());
         wordService.saveWord(wordPojo);
-        return "redirect:/word";
+        return "redirect:/wordNew";
     }
 
 
@@ -32,6 +32,13 @@ public class MainController {
     private String getWordFromDb(Model model) {
         model.addAttribute("word", new WordPojo());
         return "word";
+    }
+
+
+    @GetMapping("/wordNew")
+    private String putWordToDb(Model model) {
+        model.addAttribute("word", new WordPojo());
+        return "wordNew";
     }
 
     @GetMapping("/word2")
@@ -47,16 +54,16 @@ public class MainController {
         return "random";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/words")
     private String getAllWordFromDb(Model model) {
         model.addAttribute("words", wordService.getALLWord());
-        return "index";
+        return "words";
     }
 
     @GetMapping("/")
     private String mainPage() {
 
-        return "index2";
+        return "index";
     }
 
 

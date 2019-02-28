@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
@@ -47,7 +48,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
-                        <a class="dropdown-item" href="/index"> Lista Słowek do nauki </a>
+                        <a class="dropdown-item" href="/words"> Lista Słowek do nauki </a>
                         <a class="dropdown-item" href="/word"> Dodaj Nowe słowo </a>
 
 
@@ -70,7 +71,30 @@
 
     <div class="row">
         <div class="col">
+            <table class="table table-hover table-light">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Słowo</th>
+                    <th scope="col">Tłumaczenie</th>
 
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="slowo : ${words}">
+                    <th scope="row" th:text="${words.indexOf(slowo)+1}">1</th>
+                    <td th:text="${slowo.word}"></td>
+                    <td th:text="${slowo.translatedWord}"></td>
+                    <!--<td>-->
+                        <!--<form method="POST" th:action="@{'/update?add='+${slowo.addDate}}">-->
+                            <!--<button type="submit" name="submit" value="value" class="btn btn-success btn-sm">UPDATE-->
+                            <!--</button>-->
+                        <!--</form>-->
+                    <!--</td>-->
+                </tr>
+
+                </tbody>
+            </table>
 
         </div>
     </div>
@@ -98,3 +122,4 @@
 
 </body>
 </html>
+
