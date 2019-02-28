@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<div class="container">
+
     <header>
 
         <nav class="navbar navbar-dark  bg-primary navbar-expand-lg">
@@ -59,7 +59,7 @@
         </nav>
     </header>
 
-
+    <div class="container">
     <form th:action="@{/wordCreator}" th:object="${word}" method="post">
         <div th:text="'Słowo :'"></div>
         <input type="text" th:field="*{word}" autocomplete="off">
