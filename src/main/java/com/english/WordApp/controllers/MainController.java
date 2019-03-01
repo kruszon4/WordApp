@@ -42,12 +42,12 @@ public class MainController {
         model.addAttribute("word", new WordPojo());
         return "wordNew";
     }
-
-    @GetMapping("/word2")
-    private String putWordFromFile() throws FileNotFoundException {
-        wordService.addWordToDbFromFile();
-        return "redirect:/words";
-    }
+//
+//    @GetMapping("/word2")
+//    private String putWordFromFile() throws FileNotFoundException {
+//        wordService.addWordToDbFromFile();
+//        return "redirect:/words";
+//    }
 
 
     @GetMapping("/random")
