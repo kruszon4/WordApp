@@ -18,8 +18,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class WordService {
-
-
     private final WordRepository wordRepository;
 
 
@@ -50,6 +48,11 @@ public class WordService {
     }
 
 
+    public void deleteAllDatabase() {
+        wordRepository.deleteAll();
+    }
+
+
     public WordPojo getRandomWord() {
 
         WordPojo randomWordPojo = new WordPojo();
@@ -73,7 +76,7 @@ public class WordService {
         wordRepository.save(wordEntity);
     }
 
-    public void addWordToDbFromFile(){
+    public void addWordToDbFromFile() {
 
         String data = "";
         ClassPathResource cpr = new ClassPathResource("static/word.txt");

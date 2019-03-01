@@ -11,7 +11,7 @@ debilitate,osłabiać czyjeś siły
 debilitating ,wyniszczające
 miraculous,cudowny
 miraculously,cudownie
-revolve around ,kręci się wokół
+revolve around,kręci się wokół
 brewery,browar
 storage,przechowywanie
 intercom,awiofon
@@ -29,7 +29,7 @@ recipient,odbiorca
 censorship,cenzura
 comparison between sth and sth,porównanie między
 tap,dotknięcie
-imagine    imaginary,wyobraź sobie   wyimaginowane
+imagine,wyobraź sobie
 manually,ręcznie
 peculiar,szczególny
 assumption,założenie
@@ -43,7 +43,7 @@ shrinking realm,kurczące się królestwo
 shrink,kurczyć się
 spur a discussion,pobudzić dyskusję
 murky,mroczny
-tally up   calculate,zsumować   obliczyć
+tally up calculate,zsumować obliczyć
 merch,merch
 merchandise,towar
 merchandiser,merchandiser
@@ -55,13 +55,13 @@ depth,głębokość
 nasal septum,przegroda nosowa
 sleep apnea,bezdech senny
 breath,oddech
-breathing ,oddechowy
+breathing,oddechowy
 brother in law,szwagier
 persuade,namawiać
 extraordinary,niezwykły
-parachute ,spadochron
+parachute,spadochron
 South,Południe
-fulfilment ,spełnienie
+fulfilment,spełnienie
 niece,siostrzenica
 nephew,siostrzeniec
 group work,Praca grupowa
@@ -80,7 +80,7 @@ stamina,wytrzymałość
 muscular,muskularny
 excluded,wyłączone
 included,włączone
-inevitable ,nieunikniony
+inevitable,nieunikniony
 show up,pokazać się
 agency,agencja
 cabinet,gabinet
@@ -97,7 +97,7 @@ threat,zagrożenie
 obesity,otyłość
 persuade,namawiać
 exaggerate,wyolbrzymiać
-mountains ,góry
+mountains,góry
 resolution,rozkład
 to procrastinate,odwlekać
 court,Sąd
