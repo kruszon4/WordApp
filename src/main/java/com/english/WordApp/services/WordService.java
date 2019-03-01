@@ -78,37 +78,37 @@ public class WordService {
         wordRepository.save(wordEntity);
     }
 
-    public void addWordToDbFromFile() throws FileNotFoundException {
-
-        String data = "";
-        ClassPathResource cpr = new ClassPathResource("static/word.txt");
-        try {
-            byte[] bdata = FileCopyUtils.copyToByteArray(cpr.getInputStream());
-            data = new String(bdata, StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            System.out.println("dfds");
-        }
-
-        String[] split = data.split("\r\n");
-
-        for (String str : split
-                ) {
-            String[] split1 = str.split(",");
-
-            WordPojo build = WordPojo.builder()
-                    .addDate(new Date().getTime())
-                    .word(split1[0].trim())
-                    .translatedWord(split1[1].trim())
-                    .understanding(0)
-                    .build();
-
-            saveWord(build);
-
-
-        }
-
-
-    }
+//    public void addWordToDbFromFile(){
+//
+//        String data = "";
+//        ClassPathResource cpr = new ClassPathResource("static/word.txt");
+//        try {
+//            byte[] bdata = FileCopyUtils.copyToByteArray(cpr.getInputStream());
+//            data = new String(bdata, StandardCharsets.UTF_8);
+//        } catch (IOException e) {
+//            System.out.println("dfds");
+//        }
+//
+//        String[] split = data.split("\r\n");
+//
+//        for (String str : split
+//                ) {
+//            String[] split1 = str.split(",");
+//
+//            WordPojo build = WordPojo.builder()
+//                    .addDate(new Date().getTime())
+//                    .word(split1[0].trim())
+//                    .translatedWord(split1[1].trim())
+//                    .understanding(0)
+//                    .build();
+//
+//            saveWord(build);
+//
+//
+//        }
+//
+//
+//    }
 
 
     public WordEntity map(WordPojo source) {
