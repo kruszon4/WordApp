@@ -3,14 +3,19 @@ package com.english.WordApp.services;
 import com.english.WordApp.domain.model.WordEntity;
 import com.english.WordApp.domain.repositories.WordRepository;
 import com.english.WordApp.model.WordPojo;
+import com.sun.javaws.security.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
+import org.springframework.util.FileCopyUtils;
 
-import java.io.File;
+import java.beans.beancontext.BeanContextSupport;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -66,7 +71,6 @@ public class WordService {
     }
 
 
-
     public void updateWord(Long id) {
 
         WordEntity wordEntity = wordRepository.getOne(id);
@@ -76,31 +80,35 @@ public class WordService {
 
     public void addWordToDbFromFile() throws FileNotFoundException {
 
+        String data = "";
+        ClassPathResource cpr = new ClassPathResource("static/word.txt");
+        try {
+            byte[] bdata = FileCopyUtils.copyToByteArray(cpr.getInputStream());
+            data = new String(bdata, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            System.out.println("dfds");
+        }
 
+        String[] split = data.split("\r\n");
 
-        File file = ResourceUtils.getFile("classpath:static/word.txt");
-        System.out.println("File Found : " + file.exists());
-
-        Scanner scan = new Scanner(file);
-
-        while (scan.hasNextLine()) {
-            String string = scan.nextLine();
-            String[] split = string.split(",");
+        for (String str : split
+                ) {
+            String[] split1 = str.split(",");
 
             WordPojo build = WordPojo.builder()
                     .addDate(new Date().getTime())
-                    .word(split[0])
-                    .translatedWord(split[1])
+                    .word(split1[0].trim())
+                    .translatedWord(split1[1].trim())
                     .understanding(0)
                     .build();
 
             saveWord(build);
+
+
         }
 
-        scan.close();
+
     }
-
-
 
 
     public WordEntity map(WordPojo source) {
@@ -132,15 +140,13 @@ public class WordService {
         wordRepository.delete(wordEntity);
     }
 
-    private String firstLetterUpperCase(String source){
+    private String firstLetterUpperCase(String source) {
 
 
         return source.substring(0, 1).toUpperCase() + source.substring(1);
 
 
     }
-
-
 
 
 }

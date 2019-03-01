@@ -46,7 +46,7 @@ public class MainController {
     @GetMapping("/word2")
     private String putWordFromFile() throws FileNotFoundException {
         wordService.addWordToDbFromFile();
-        return "redirect:/index";
+        return "redirect:/words";
     }
 
 
