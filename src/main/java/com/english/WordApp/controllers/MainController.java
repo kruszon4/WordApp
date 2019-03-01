@@ -2,10 +2,12 @@ package com.english.WordApp.controllers;
 
 import com.english.WordApp.model.WordPojo;
 import com.english.WordApp.services.WordService;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.FileNotFoundException;
 
@@ -78,14 +80,14 @@ public class MainController {
     private String updateWordInDb2(@RequestParam(value = "add") Long addDate) {
 
         wordService.updateWord(addDate);
-        return "redirect:/";
+        return "redirect:/words";
     }
 
     @PostMapping("/delete/{delete}")
     private String deleteWordFromDb(@PathVariable(value = "delete") Long addDate) {
 
         wordService.deleteWord(addDate);
-        return "redirect:/index";
+        return "redirect:/words";
     }
 
 
