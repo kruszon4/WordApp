@@ -3,7 +3,6 @@ package com.english.WordApp.services;
 import com.english.WordApp.domain.model.WordEntity;
 import com.english.WordApp.domain.repositories.WordRepository;
 import com.english.WordApp.model.WordPojo;
-import com.sun.javaws.security.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.io.ClassPathResource;
@@ -11,14 +10,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 
-import java.beans.beancontext.BeanContextSupport;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @Service
