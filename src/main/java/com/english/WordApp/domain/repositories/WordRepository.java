@@ -13,5 +13,7 @@ public interface WordRepository extends JpaRepository<WordEntity, Long> {
             nativeQuery = true)
     public WordEntity findRandomWord();
 
+    public WordEntity findByWord(String str);
+
 
 }

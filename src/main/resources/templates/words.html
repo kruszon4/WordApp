@@ -47,11 +47,11 @@
                     </td>
                     <td>
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                th:attr="data-target='#'+${slowo.word}" >
+                                th:attr="data-target='#'+ ${slowo.word.replace(32, 'a')}">
                             Del
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" th:id="${slowo.word}" tabindex="-1" role="dialog"
+                        <div class="modal fade" th:id="${slowo.word.replace(32, 'a')}" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel"
                              aria-hidden="true">
                             <div class="modal-dialog" role="document">

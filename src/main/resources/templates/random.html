@@ -16,7 +16,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $("#MyButton").click(function() {
+                $("#div1").load(" #div1 > *");
+            });
+        });
+    </script>
+
+
     <link rel="stylesheet" href="../css/style.css">
+
 
 </head>
 
@@ -27,11 +44,11 @@
 
 
 <div th:if="${random.word} != 'null'" class="container">
-    <div class="row">
+    <div th:id="div1" class="row">
         <div class="col">
             <p>
 
-                <button th:text="${random.word}" class="btn btn-primary" type="button" data-toggle="collapse"
+                <button th:id="block" th:text="${random.word}" class="btn btn-primary" type="button" data-toggle="collapse"
                         data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Button with data-target
                 </button>
@@ -51,10 +68,7 @@
 
         <div class="col">
 
-            <button class="btn btn-danger" onClick="window.location.reload()" type="button" data-toggle="collapse"
-                    data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Nie Umiem
-            </button>
+            <button id="MyButton" class="btn btn-warning">Nie Umiem</button>
         </div>
         <div class="col">
             <form method="POST" th:action="@{'/update?add='+${random.addDate}}">

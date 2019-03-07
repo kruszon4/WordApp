@@ -26,6 +26,7 @@ public class MainController {
     private String putWordToDb(WordPojo wordPojo) {
         wordPojo.setAddDate(System.currentTimeMillis());
         wordService.saveWord(wordPojo);
+        wordService.makeBackup();
         return "redirect:/wordNew";
     }
 
@@ -44,9 +45,16 @@ public class MainController {
     }
 
     @GetMapping("/word2")
-    private String putWordFromFile() throws FileNotFoundException {
+    private String putWordFromFile() {
         wordService.deleteAllDatabase();
         wordService.addWordToDbFromFile();
+        return "redirect:/words";
+    }
+
+
+    @GetMapping("/backup")
+    private String backup() {
+        wordService.makeBackup();
         return "redirect:/words";
     }
 
@@ -57,6 +65,7 @@ public class MainController {
         return "random";
     }
 
+
     @GetMapping("/words")
     private String getAllWordFromDb(Model model) {
         model.addAttribute("words", wordService.getALLWord());
@@ -65,6 +74,7 @@ public class MainController {
 
     @GetMapping("/")
     private String mainPage() {
+
 
         return "index";
     }

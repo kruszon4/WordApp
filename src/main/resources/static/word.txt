@@ -145,7 +145,7 @@ aging,starzenie się
 doll,lalka
 conditions,warunki
 stamina,wytrzymałość
-psyche,Psyche
+psyche,dusza
 intuitive,intuicyjny
 work off,pozbyć się dzięki pracy
 order,zamówienie

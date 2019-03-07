@@ -1,7 +1,9 @@
 package com.english.WordApp.services;
 
 import com.english.WordApp.domain.model.WordEntity;
+import com.english.WordApp.domain.model.WordEntityBackup;
 import com.english.WordApp.domain.repositories.WordRepository;
+import com.english.WordApp.domain.repositories.WordRepositoryBackup;
 import com.english.WordApp.model.WordPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -19,12 +21,14 @@ import java.util.stream.Collectors;
 @Service
 public class WordService {
     private final WordRepository wordRepository;
+    private final WordRepositoryBackup wordRepositoryBackup;
 
 
     @Lazy
     @Autowired
-    public WordService(WordRepository wordRepository) {
+    public WordService(WordRepository wordRepository, WordRepositoryBackup wordRepositoryBackup) {
         this.wordRepository = wordRepository;
+        this.wordRepositoryBackup = wordRepositoryBackup;
     }
 
 
@@ -33,9 +37,12 @@ public class WordService {
         if (wordPojo.getWord().length() == 0 || wordPojo.getTranslatedWord().length() == 0) {
             System.out.println("Puste");
         } else {
+
             wordRepository.save(map(wordPojo));
 
+
         }
+
 
     }
 
@@ -84,7 +91,7 @@ public class WordService {
             byte[] bdata = FileCopyUtils.copyToByteArray(cpr.getInputStream());
             data = new String(bdata, StandardCharsets.UTF_8);
         } catch (IOException e) {
-            System.out.println("dfds");
+
         }
 
         String[] split = data.split("\r\n");
@@ -132,11 +139,35 @@ public class WordService {
     }
 
 
+    public WordEntityBackup mapEntity(WordEntity source) {
+
+        return WordEntityBackup.builder()
+                .addDate(source.getAddDate())
+                .translatedWord(source.getTranslatedWord())
+                .understanding(source.getUnderstanding())
+                .word(source.getWord())
+                .build();
+
+    }
+
+
     public void deleteWord(Long id) {
 
         WordEntity wordEntity = wordRepository.getOne(id);
         wordRepository.delete(wordEntity);
     }
+
+    public void makeBackup() {
+
+        List<WordEntityBackup> collect = wordRepository.findAll().stream().map(this::mapEntity).collect(Collectors.toList());
+
+        List<WordEntityBackup> allBackup = wordRepositoryBackup.findAll();
+
+        allBackup.addAll(collect);
+
+        wordRepositoryBackup.saveAll(collect);
+    }
+
 
     private String firstLetterUpperCase(String source) {
 
