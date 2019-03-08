@@ -14,6 +14,7 @@ import org.springframework.util.FileCopyUtils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -176,6 +177,21 @@ public class WordService {
 
 
     }
+
+    public int[] understanding() {
+        int[] ints = new int[2];
+        ints[0] = wordRepository.countByUnderstanding(1);
+        ints[1] = wordRepository.countByUnderstanding(0);
+
+
+
+        return ints;
+
+
+    }
+
+
+
 
 
 }

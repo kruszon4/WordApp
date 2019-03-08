@@ -31,3 +31,13 @@ font-size: 50px;
     cursor: pointer;
     text-align: center;
 }
+#buttons button{
+    display: block;
+}
+
+#chart{
+    width: 20rem;
+    height: 20rem;
+    margin-top: 20px;
+
+}

@@ -61,7 +61,10 @@ public class MainController {
 
     @GetMapping("/random")
     private String getRandomWord(Model model) {
+
+        model.addAttribute("understanding", wordService.understanding());
         model.addAttribute("random", wordService.getRandomWord());
+
         return "random";
     }
 

@@ -7,12 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Dane z TRISTAR'a</title>
 
-    <link rel="stylesheet" type="text/css" href="../css/leaflet.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/leaflet-loader.css"/>
-    <script type='text/javascript' src='../js/jquery.min.js'></script>
-    <script type='text/javascript' src='../js/leaflet.js'></script>
-    <script type='text/javascript' src='../js/leaflet-loader.js'></script>
-    <script type='text/javascript' src='../js/leaflet-layerjson.min.js'></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
@@ -21,16 +16,16 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
 
-
     <script>
 
         $(document).ready(function () {
-            $("#MyButton").click(function() {
+            $("#MyButton").click(function () {
                 $("#div1").load(" #div1 > *");
             });
         });
     </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
 
@@ -42,13 +37,20 @@
 
 <div th:replace="general.html :: header"></div>
 
+<div th:if="${random.word} == 'null'" class="container">
+    <div class="alert alert-success" role="alert">
+        Umiesz Wszystkie słówka z bazy !! :)
+    </div>
+</div>
+
 
 <div th:if="${random.word} != 'null'" class="container">
     <div th:id="div1" class="row">
         <div class="col">
             <p>
 
-                <button th:id="block" th:text="${random.word}" class="btn btn-primary" type="button" data-toggle="collapse"
+                <button th:id="block" th:text="${random.word}" class="btn btn-secondary" type="button"
+                        data-toggle="collapse"
                         data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Button with data-target
                 </button>
@@ -66,27 +68,29 @@
     <div class="row">
 
 
-        <div class="col">
+        <div th:id="buttons" class="col">
 
-            <button id="MyButton" class="btn btn-warning">Nie Umiem</button>
+            <button id="MyButton" class="btn btn-danger btn-block">Nie Umiem</button>
         </div>
         <div class="col">
             <form method="POST" th:action="@{'/update?add='+${random.addDate}}">
-                <button class="btn btn-success" type="submit" name="submit" value="value">Umiem</button>
+                <button class="btn btn-success btn-block" type="submit" name="submit" value="value">Umiem</button>
 
             </form>
         </div>
     </div>
 
-
-</div>
-
-
-<div th:if="${random.word} == 'null'" class="container">
-    <div class="alert alert-success" role="alert">
-        Umiesz Wszystkie słówka z bazy !! :)
+<div class="row justify-content-center">
+    <div id="chart" class="chart-container">
+        <canvas id="myChart"></canvas>
     </div>
 </div>
+
+</div>
+
+
+
+
 
 <footer style="text-align: center">
 
@@ -94,7 +98,30 @@
     </p>
 
 </footer>
-</div>
+
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+
+    var know = [[${understanding[0]}]];
+    var unknow = [[${understanding[1]}]];
+
+    new Chart(document.getElementById("myChart"), {
+
+
+        type: "doughnut",
+        data: {
+            labels: ["Umiem", "Nie Umiem"],
+            datasets: [{
+                label: "My First Dataset",
+                data: [know, unknow], backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"]
+            }]
+        }
+    });
+    /*]]>*/
+</script>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
