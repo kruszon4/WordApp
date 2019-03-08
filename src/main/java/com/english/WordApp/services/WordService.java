@@ -145,7 +145,7 @@ public class WordService {
         return WordEntityBackup.builder()
                 .addDate(source.getAddDate())
                 .translatedWord(source.getTranslatedWord())
-                .understanding(source.getUnderstanding())
+                .understanding(0)
                 .word(source.getWord())
                 .build();
 
