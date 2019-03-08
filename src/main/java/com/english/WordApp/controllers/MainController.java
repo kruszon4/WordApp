@@ -83,6 +83,22 @@ public class MainController {
     }
 
 
+    @GetMapping("/deleteAll")
+    private String deleteAllWord() {
+
+        wordService.deleteAllDatabase();
+        return "redirect:/words";
+    }
+
+
+    @GetMapping("/restore")
+    private String restoreWordFromBackup() {
+
+        wordService.restoreWord();
+        return "redirect:/words";
+    }
+
+
     @PostMapping("/update")
     private String updateWordInDb(@RequestParam(value = "add") Long addDate) {
 

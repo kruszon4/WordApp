@@ -152,11 +152,24 @@ public class WordService {
     }
 
 
+    public WordEntity mapEntity(WordEntityBackup source) {
+
+        return WordEntity.builder()
+                .addDate(source.getAddDate())
+                .translatedWord(source.getTranslatedWord())
+                .understanding(source.getUnderstanding())
+                .word(source.getWord())
+                .build();
+
+    }
+
+
     public void deleteWord(Long id) {
 
         WordEntity wordEntity = wordRepository.getOne(id);
         wordRepository.delete(wordEntity);
     }
+
 
     public void makeBackup() {
 
@@ -184,14 +197,20 @@ public class WordService {
         ints[1] = wordRepository.countByUnderstanding(0);
 
 
-
         return ints;
 
 
     }
 
+    public void restoreWord() {
 
 
+        List<WordEntityBackup> allBackup = wordRepositoryBackup.findAll();
+
+        wordRepository.saveAll(allBackup.stream().map(this::mapEntity).collect(Collectors.toList()));
+
+
+    }
 
 
 }
