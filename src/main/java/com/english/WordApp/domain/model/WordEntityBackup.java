@@ -28,7 +28,4 @@ public class WordEntityBackup {
     private String word;
     private String translatedWord;
     private int understanding;
-
-
-
 }

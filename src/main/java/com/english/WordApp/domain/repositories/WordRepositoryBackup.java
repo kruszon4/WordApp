@@ -9,9 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WordRepositoryBackup extends JpaRepository<WordEntityBackup, Long> {
 
-
-
-
-
-
 }

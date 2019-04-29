@@ -61,7 +61,6 @@ public class MainController {
 
     @GetMapping("/random")
     private String getRandomWord(Model model) {
-
         model.addAttribute("understanding", wordService.understanding());
         model.addAttribute("random", wordService.getRandomWord());
 
@@ -77,15 +76,12 @@ public class MainController {
 
     @GetMapping("/")
     private String mainPage() {
-
-
         return "index";
     }
 
 
     @GetMapping("/deleteAll")
     private String deleteAllWord() {
-
         wordService.deleteAllDatabase();
         return "redirect:/words";
     }
@@ -93,7 +89,6 @@ public class MainController {
 
     @GetMapping("/restore")
     private String restoreWordFromBackup() {
-
         wordService.restoreWord();
         return "redirect:/words";
     }
@@ -108,14 +103,12 @@ public class MainController {
 
     @PostMapping("/update2")
     private String updateWordInDb2(@RequestParam(value = "add") Long addDate) {
-
         wordService.updateWord(addDate);
         return "redirect:/words";
     }
 
     @PostMapping("/delete/{delete}")
     private String deleteWordFromDb(@PathVariable(value = "delete") Long addDate) {
-
         wordService.deleteWord(addDate);
         return "redirect:/words";
     }

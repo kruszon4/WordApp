@@ -24,14 +24,7 @@ public class WordEntity {
 
     @Id
     private Long addDate;
-   // @GeneratedValue(strategy = GenerationType.AUTO)
-
-   // private Long id;
-
     private String word;
     private String translatedWord;
     private int understanding;
-
-
-
 }
